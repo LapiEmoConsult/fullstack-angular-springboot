@@ -1,0 +1,30 @@
+
+  <div class="container mt-5 pt-3 pl-3 pb-3" style="width: 500px;background-color: white; margin: 0 auto;">
+    <h1>TODO List</h1>
+
+    <div class="formgroup-inline" style="margin-top: 50px;">
+      <div class="field">
+        <span class="p-float-label">
+          <input pInputText id="todo" [(ngModel)] ="myValue" (keyup.enter)="onClickEnter()"/>
+          <label for="todo">Add New TODO</label>
+        </span>
+      </div>
+        <p-button label="Add" (click)="addTodo()"></p-button>
+    </div>
+
+    <div>
+      <ol>
+        <li *ngFor="let todo of todos" style="margin-bottom: 10px;">
+          <div class="flex align-items-center gap-2">
+            <p-checkbox value="New York" inputId="ny" #checkbox></p-checkbox>
+            <label for="ny" [style.text-decoration]="checkbox.checked() ? 'line-through' : 'none'">{{ todo.label }}</label>
+            <i class="pi pi-trash icon-button" style="color: red;" (click)="deleteTodo(todo.id)"></i>
+
+        </div>
+        </li>
+      </ol>
+    </div>
+  </div>
+
+
+<router-outlet />
